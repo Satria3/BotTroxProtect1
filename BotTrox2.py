@@ -1410,13 +1410,23 @@ def bot(op):
             elif msg.text is None:
                 return
             elif msg.text in ["Key","help","Help"]:
+              if msg.from_ in admin:
                 if wait["lang"] == "JP":
                     cl.sendText(msg.to,helpMessage + datetime.today().strftime('%H:%M:%S'))
+                    msg.contentType = 13
+                    cl.sendText(msg.to,"PEMBUAT BOT\n🇲🇨⊰์◉⊱B❂TT❂X B❂T⊰์◉⊱🇲🇨")
+                    msg.contentMetadata = {'mid': 'u1608ae21e5de2547b5fa8707b21ca220'}
+                    cl.sendMessage(msg)
                 else:
                     cl.sendText(msg.to,helpt)
             elif msg.text.lower() == 'help1':
+              if msg.from_ in admin:
                 if wait["lang"] == "JP":
                     cl.sendText(msg.to, helpsystem + datetime.today().strftime('%H:%M:%S'))
+                    msg.contentType = 13
+                    cl.sendText(msg.to,"PEMBUAT BOT\n🇲🇨⊰์◉⊱B❂TT❂X B❂T⊰์◉⊱🇲🇨")
+                    msg.contentMetadata = {'mid': 'u1608ae21e5de2547b5fa8707b21ca220'}
+                    cl.sendMessage(msg)
                 else:
                     cl.sendText(msg.to,helpsystem)
             elif msg.text in ["Admin menu"]:
@@ -1577,6 +1587,10 @@ def bot(op):
                   for mi_d in admin:
                       mc += "••>" +cl.getContact(mi_d).displayName + "\n"
                   cl.sendText(msg.to,mc)
+                  msg.contentType = 13
+                  cl.sendText(msg.to,"PEMBUAT BOT\n🇲🇨⊰์◉⊱B❂TT❂X B❂T⊰์◉⊱🇲🇨")
+                  msg.contentMetadata = {'mid': 'u1608ae21e5de2547b5fa8707b21ca220'}
+                  cl.sendMessage(msg)
                   print "[Command]Stafflist executed"
     #--------------------------------------
     #-------------- Add Friends ------------ 
@@ -2344,6 +2358,10 @@ def bot(op):
                 if wait["commentOn"] == True: md+="[•]Comment [On]\n"
                 else:md+="[•]Comment [Off]\n*============*\n🇲🇨⊰์◉⊱B❂TT❂X B❂T⊰์◉⊱🇲🇨\n*============*"
                 cl.sendText(msg.to,md)
+                msg.contentType = 13
+                cl.sendText(msg.to,"PEMBUAT BOT\n🇲🇨⊰์◉⊱B❂TT❂X B❂T⊰์◉⊱🇲🇨")
+                msg.contentMetadata = {'mid': 'u1608ae21e5de2547b5fa8707b21ca220'}
+                cl.sendMessage(msg)
             elif "album merit " in msg.text:
                 gid = msg.text.replace("album merit ","")
                 album = cl.getAlbum(gid)
@@ -2907,7 +2925,7 @@ def bot(op):
     #-------------Fungsi Leave Group Finish---------------#
     
     #-------------Fungsi Tag All Start---------------#
-            elif msg.text in ["Tagall"]:
+            elif msg.text in ["Dor","Tag"]:
             	 if msg.from_ in admin:
                   group = cl.getGroup(msg.to)
                   nama = [contact.mid for contact in group.members] 
@@ -2930,6 +2948,10 @@ def bot(op):
                   msg.contentMetadata ={'MENTION':'{"MENTIONEES":['+cb+']}','EMTVER':'4'}
                   cl.sendMessage(msg)
                   cl.sendText(msg.to,"Yuk Kak Ngumpul Ada Notif Penting \n  (｀・ω・´)\n \n"  +  datetime.now().strftime('%H:%M:%S'))
+                  msg.contentType = 13
+                  cl.sendText(msg.to,"PEMBUAT BOT\n🇲🇨⊰์◉⊱B❂TT❂X B❂T⊰์◉⊱🇲🇨")
+                  msg.contentMetadata = {'mid': 'u1608ae21e5de2547b5fa8707b21ca220'}
+                  cl.sendMessage(msg)
              # else: 
                   if wait["tagall"] == True:  
                        xname = cl.getContact(msg.from_).displayName
@@ -2938,7 +2960,54 @@ def bot(op):
                        msg.contentMetadata = {'mid': 'u1608ae21e5de2547b5fa8707b21ca220'}
                        cl.sendMessage(msg)
                        
-            elif "Tag" == msg.text.lower():
+            elif "tag" == msg.text.lower():
+            	if msg.from_ in admin:
+                 group = cl.getGroup(msg.to)
+                 nama = [contact.mid for contact in group.members]
+                 nm1, nm2, nm3, nm4, nm5, jml = [], [], [], [], [], len(nama)
+                 if jml <= 100:
+                    summon(msg.to, nama)
+                 if jml > 100 and jml < 200:
+                    for i in range(0, 99):
+                        nm1 += [nama[i]]
+                    summon(msg.to, nm1)
+                    for j in range(100, len(nama)-1):
+                        nm2 += [nama[j]]
+                    summon(msg.to, nm2)
+                 if jml > 200  and jml < 500:
+                    for i in range(0, 99):
+                        nm1 += [nama[i]]
+                    summon(msg.to, nm1)
+                    for j in range(100, 199):
+                        nm2 += [nama[j]]
+                    summon(msg.to, nm2)
+                    for k in range(200, 299):
+                        nm3 += [nama[k]]
+                    summon(msg.to, nm3)
+                    for l in range(300, 399):
+                        nm4 += [nama[l]]
+                    summon(msg.to, nm4)
+                    for m in range(400, len(nama)-1):
+                        nm5 += [nama[m]]
+                    summon(msg.to, nm5)
+                 if jml > 500:
+                     print "Terlalu Banyak Men 500+"
+                 cnt = Message()
+                 cnt.text = "Jumlah:\n" + str(jml) +  " Members"
+                 cnt.to = msg.to
+                 cl.sendMessage(cnt)
+                 xname = cl.getContact(msg.from_).displayName
+                 cl.sendText(msg.to,"Ada pemberitahuan dari kak "+xname+"\nJangan Pada diam Ya kak  \nJangan Juga sider   (｀・ω・´)\n \n"  +  datetime.now().strftime('%H:%M:%S'))
+                 msg.contentType = 13
+                 cl.sendText(msg.to,"PEMBUAT BOT\n🇲🇨⊰์◉⊱B❂TT❂X B❂T⊰์◉⊱🇲🇨")
+                 msg.contentMetadata = {'mid': 'u1608ae21e5de2547b5fa8707b21ca220'}
+                 cl.sendMessage(msg)
+                else:   
+                  if wait["tagall"] == True:  
+                       xname = cl.getContact(msg.from_).displayName
+                       cl.sendText(msg.to,"Maaf, @"+xname+"\nUtk sementara Tagall Khusus Admin Dikarenakan Terlalu Banyak spam \n\n"  +  datetime.now().strftime('%H:%M:%S'))
+                       
+            elif "Tagall" == msg.text.lower():
             	if msg.from_ in admin:
                  group = cl.getGroup(msg.to)
                  nama = [contact.mid for contact in group.members]
@@ -2979,7 +3048,14 @@ def bot(op):
                 else:   
                   if wait["tagall"] == True:  
                        xname = cl.getContact(msg.from_).displayName
-                       cl.sendText(msg.to,"Maaf, @"+xname+"\nUtk sementara Tagall Khusus Admin Dikarenakan Terlalu Banyak spam \n\n"  +  datetime.now().strftime('%H:%M:%S'))
+                       cl.sendText(msg.to,"Maaf, @"+xname+"\nUtk sementara Tagall Khusus Admin Dikarenakan Terlalu Banyak spam \nUntuk Menjadi Admin Shilalakan,Chat saya  (｀・ω・´)\n \n"  +  datetime.now().strftime('%H:%M:%S'))
+                       msg.contentType = 13
+                       msg.contentMetadata = {'mid': 'u1608ae21e5de2547b5fa8707b21ca220'}
+                       cl.sendMessage(msg)
+                       cl.sendText(msg.to,"PEMBUAT BOT")
+                       msg.contentType = 13
+                       msg.contentMetadata = {'mid': 'u1608ae21e5de2547b5fa8707b21ca220'}
+                       cl.sendMessage(msg)
     #-------------Fungsi Tag All Finish---------------#
             elif msg.text in ["Bot Like", "Bot like"]: #Semua Bot Ngelike Status Akun Utama
               if msg.from_ in owner:
@@ -3349,6 +3425,9 @@ def bot(op):
                 msg.contentMetadata = {'mid': 'u622a5e6c9bcec78d243e10e604a32dbd'}
                 kk.sendMessage(msg)
                 kk.sendText(msg.to,"Itu Para Owner Kami Yang vekok 😂😂")
+            elif msg.text.lower() in ["hay"]:
+                    beb = "Hi Sayang 😘 " +cl.getContact(msg.from_).displayName + " 􀸂􀆇starry heart􏿿"
+                    cl.sendText(msg.to,beb)
             elif msg.text in [".welcome"]:
               if msg.from_ in admin:
                 ki.sendText(msg.to,"Selamat datang di Group Kami")
@@ -3359,7 +3438,35 @@ def bot(op):
                 van = "Bot sudah berjalan selama "+waktu(eltime)
                 cl.sendText(msg.to,van)
   #----------------------------------
-        
+            elif "Waktu" in msg.text:
+              if msg.from_ in admin:
+	    	       wait2['setTime'][msg.to] = datetime.today().strftime('TANGGAL : %Y-%m-%d \nHARI : %A \nJAM : %H:%M:%S')
+	               cl.sendText(msg.to, "         Waktu/Tanggal\n\n" + (wait2['setTime'][msg.to]))
+	               cl.sendText(msg.to, "Maafin Satria Jika salah Ya kak\n(｀・ω・´)\n \n"  +  datetime.now().strftime('%H:%M:%S'))
+	
+            elif msg.text in ["Friendlist"]:
+              if msg.from_ in admin:
+                contactlist = cl.getAllContactIds()
+                kontak = cl.getContacts(contactlist)
+                num=1
+                msgs="══════List Friend═══════"
+                for ids in kontak:
+                    msgs+="\n[%i] %s" % (num, ids.displayName)
+                    num=(num+1)
+                msgs+="\n══════List Friend═══════\n\nTotal Friend : %i" % len(kontak)
+                cl.sendText(msg.to, msgs)
+
+            elif msg.text in ["Memlist"]:
+              if msg.from_ in admin:   
+                kontak = cl.getGroup(msg.to)
+                group = kontak.members
+                num=1
+                msgs="══════List Member═�����═════-"
+                for ids in group:
+                    msgs+="\n[%i] %s" % (num, ids.displayName)
+                    num=(num+1)
+                msgs+="\n══════List Member═══════\n\nTotal Members : %i" % len(group)
+                cl.sendText(msg.to, msgs)
 #-------------------------------------------------
             elif "Sider on" in msg.text:
 	      if msg.from_ in admin:
@@ -3380,7 +3487,7 @@ def bot(op):
                 if msg.to in cctv['point']:
                     cctv['cyduk'][msg.to]=False
                     wait["Sider"] = False
-                    cl.sendText(msg.to, "Cek Sider Off")
+                    cl.sendText(msg.to, "🇲🇨⊰์◉⊱B❂TT❂X B❂T⊰์◉⊱🇲🇨\nDelete reading point:\n" + datetime.now().strftime('%H:%M:%S'))
                 else:
                     cl.sendText(msg.to, "🇲🇨⊰์◉⊱B❂TT❂X B❂T⊰์◉⊱🇲🇨\nDelete reading point:\n" + datetime.now().strftime('%H:%M:%S'))
 
@@ -3467,6 +3574,10 @@ def bot(op):
                 kp.sendText(msg.to,"BotTrox14 on")
                 kt.sendText(msg.to,"BotTrox15 on")
                 cl.sendText(msg.to,"Semua Udah Hadir Boss\nSiap Protect Group\nAman Gak Aman Yang Penting Anu")
+                msg.contentType = 13
+                cl.sendText(msg.to,"PEMBUAT BOT\n🇲🇨⊰์◉⊱B❂TT❂X B❂T⊰์◉⊱🇲🇨")
+                msg.contentMetadata = {'mid': 'u1608ae21e5de2547b5fa8707b21ca220'}
+                cl.sendMessage(msg)
       #-------------Fungsi Respon Finish---------------------#
         
       #-------------Fungsi Balesan Respon Start---------------------#
@@ -3623,7 +3734,7 @@ def bot(op):
              pass
 #---------------------
         if op.type == 17:
-           if op.param2 in Bots:
+           if op.param2 in Bots + admin:
               return
            ginfo = cl.getGroup(op.param1)
            random.choice(KAC).sendText(op.param1, "Selamat Datang Di Grup  " + str(ginfo.name))
@@ -3631,7 +3742,7 @@ def bot(op):
            random.choice(KAC).sendText(op.param1,"Hallo " + cl.getContact(op.param2).displayName + "\nWelcome To ☞ " + str(ginfo.name) + " ☜" + "\nBudayakan Cek Note😁\nDan Semoga Betah Disini  (｀・😘・´)\n \n"  +  datetime.now().strftime('%H:%M:%S'))
            print "MEMBER HAS JOIN THE GROUP"
         if op.type == 15:
-           if op.param2 in Bots:
+           if op.param2 in Bots + admin:
               return
            random.choice(KAC).sendText(op.param1, "Good Bye " + cl.getContact(op.param2).displayName +  "\nSee You Next Time . . .  (｀・ω・´)\n \n"  +  datetime.now().strftime('%H:%M:%S'))
            print "MEMBER HAS LEFT THE GROUP"
